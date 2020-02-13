@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class RecipeController extends AbstractController
 {
     /**
-     * @Route("/recipe", name="recipe")
+     * @Route("/recipe", name="recipe", methods={"GET"})
      */
     public function index()
     {
