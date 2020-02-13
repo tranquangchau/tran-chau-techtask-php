@@ -70,38 +70,4 @@ class Dish
         return $this;
     }
 
-    public function findByConditionDish($id){
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT p FROM AppBundle:Dish p ORDER BY p.id ASC'
-            )
-            ->getResult();
-    }
-
-    public function toArray()
-    {
-
-        $object_name = $this->get_method ($this->getIdIngredient());
-        var_dump($object_name);die;
-
-        return [
-            'id' => $this->getId(),
-            'id_Ingredient' => $this->getIdIngredient()->getId(),
-            'id_Recipe' => $this->getIdRecipe()->getId(),
-            // 'id' => $this->getId(),
-        ];
-    }
-
-    private function get_method($object){
-        $list_method = get_class_methods ($object);
-        $list = [];
-        foreach ($list_method as $key => $value) {
-            if(substr($value,0,3) =='get'){
-                $list [] =$value;
-            }
-        }
-        return $list;
-    }
-
-
 }

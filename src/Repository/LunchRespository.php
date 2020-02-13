@@ -19,29 +19,79 @@ use App\Entity\Dish;
 class LunchRespository extends ServiceEntityRepository
 {
 
-    //https://stackoverflow.com/questions/11553183/select-entries-between-dates-in-doctrine-2
-
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Dish::class);
     }
 
+    /**
+     * get get data in dish with element
+     */
     public function getdishAll(){
         
-
         $entity= $this->createQueryBuilder('r')
-            //->andWhere('r.exampleField = :val')
-            //->setParameter('val', $value)
+            ->join('r.idRecipe', 'e')
+            ->join('r.idIngredient', 'i')
+            ->orderBy('r.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+        return $entity;
+        
+    }
+
+    // find by datetime
+    /**
+     * * get data in dish with Ingredient.bestBefore condition
+     */
+    public function getdishBestBefore($date){
+        
+        $entity= $this->createQueryBuilder('r')
             ->join('r.idRecipe', 'e')
             ->join('r.idIngredient', 'i')
             // ->where('e.id = 1')
             ->where('i.bestBefore > :last')
-            // ->setParameter('last', new \DateTime('-5 second'), \Doctrine\DBAL\Types\Type::DATETIME)
-            // ->setParameter('last', new \DateTime('2019-03-08'), \Doctrine\DBAL\Types\Type::DATETIME)
-            ->setParameter('last', new \DateTime('2019-03-08T00:00:00+01:00'), \Doctrine\DBAL\Types\Type::DATETIME)
-            // ->setParameter('last', new \DateTime('2011-01-25 23:59:59'))
+            ->setParameter('last', new \DateTime($date), \Doctrine\DBAL\Types\Type::DATETIME)
+            ->orderBy('r.id', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+        return $entity;
+        
+    }
+    // find by datetime
+    /**
+     * get data in dish with Ingredient.useby condition
+     */
+    public function getdishUserBy($date){
+        
+        $entity= $this->createQueryBuilder('r')
+            ->join('r.idRecipe', 'e')
+            ->join('r.idIngredient', 'i')
+            ->where('i.useBy > :last')
+            ->setParameter('last', new \DateTime($date), \Doctrine\DBAL\Types\Type::DATETIME)
             ->orderBy('r.id', 'ASC')
             //->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+
+        return $entity;
+        
+    }
+
+    /**
+     * get data in dish with recipe id
+     */
+    public function getdishOneByRecipe($id){
+        
+        $entity= $this->createQueryBuilder('r')
+            //->andWhere('r.exampleField = :val')
+            //->setParameter('val', $value)
+            ->join('r.idRecipe', 'e')
+            ->join('r.idIngredient', 'f')
+            ->where('e.id = '.$id)
+            ->orderBy('r.id', 'ASC')
+            // ->setMaxResults(10)
             ->getQuery()
             ->getResult();
 
@@ -59,29 +109,8 @@ class LunchRespository extends ServiceEntityRepository
         
     }
 
-    // find by datetime
-    public function getdishBestBefore(){
-        
-        $entity= $this->createQueryBuilder('r')
-            //->andWhere('r.exampleField = :val')
-            //->setParameter('val', $value)
-            ->join('r.idRecipe', 'e')
-            ->join('r.idIngredient', 'i')
-            // ->where('e.id = 1')
-            ->where('i.bestBefore > :last')
-            // ->setParameter('last', new \DateTime('-5 second'), \Doctrine\DBAL\Types\Type::DATETIME)
-            // ->setParameter('last', new \DateTime('2019-03-08'), \Doctrine\DBAL\Types\Type::DATETIME)
-            ->setParameter('last', new \DateTime('2019-03-08T00:00:00+01:00'), \Doctrine\DBAL\Types\Type::DATETIME)
-            // ->setParameter('last', new \DateTime('2011-01-25 23:59:59'))
-            ->orderBy('r.id', 'ASC')
-            //->setMaxResults(10)
-            ->getQuery()
-            ->getResult();
 
-        return $entity;
-        
-    }
-
+    //for test
     public function getdishOne(){
         
         $entity= $this->createQueryBuilder('r')
@@ -105,10 +134,10 @@ class LunchRespository extends ServiceEntityRepository
         // ->getQuery()
         // ->getResult();
 
-        return $entity;
-        
+        return $entity;        
     }
 
+    //for test
     public function recipe_show($id = null)
     {
         $recipe = $this->getDoctrine()
@@ -122,32 +151,7 @@ class LunchRespository extends ServiceEntityRepository
         }        
 
         return $recipe;
-
-        // return $this->json([
-        //     'title' =>$recipe->getTitle()        
-        // ]);
-        
-        // return new Response('Check out this great recipe: '.$recipe->getTitle());
-
-        // or render a template
-        // in the template, print things with {{ recipe.name }}
-        // return $this->render('recipe/show.html.twig', ['recipe' => $recipe]);
     }
-
-    public function saveCustomer($firstName, $lastName, $email, $phoneNumber)
-    {
-        $newCustomer = new Customer();
-
-        $newCustomer
-            ->setFirstName($firstName)
-            ->setLastName($lastName)
-            ->setEmail($email)
-            ->setPhoneNumber($phoneNumber);
-
-        $this->manager->persist($newCustomer);
-        $this->manager->flush();
-    }
-
 
     // /**
     //  * @return Dish[] Returns an array of Dish objects

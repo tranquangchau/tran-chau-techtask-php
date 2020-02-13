@@ -80,12 +80,12 @@ class DishController extends AbstractController
 
         $stmt = $db->prepare("SELECT * FROM `dish` WHERE `id` = '1' LIMIT 50");
 
-$stmt->execute();
-$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-echo '<pre>';
-print_r($rows);
-die;
+        echo '<pre>';
+        print_r($rows);
+        die;
 
 
 
@@ -120,7 +120,7 @@ die;
         }
         
         // var_dump($dish->toArray());
-die;
+        die;
         //var_dump($dish->getIdIngredient()->getId());die;
         var_dump($dish->getIdIngredient()->getBestBefore());die;
         // return $this->json([
