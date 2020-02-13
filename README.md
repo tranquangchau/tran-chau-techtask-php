@@ -59,3 +59,16 @@ query join
 - https://symfony.com/blog/introducing-the-symfony-maker-bundle
 - https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html
 - php bin/console make:controller recipe
+
+
+
+# Link api
+
+- all dish
+http://127.0.0.1:8000/lunch
+
+- date input > ingredient.best_before
+http://127.0.0.1:8000/bestbefore/2019-03-5
+http://127.0.0.1:8000/bestbefore/2019-03-50 (error)
+- date input > ingredient.use_by
+http://127.0.0.1:8000/userby/2019-02-02
