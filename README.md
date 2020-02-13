@@ -47,3 +47,10 @@ php bin/console make:entity --regenerate App (general setget)
 (make migration)
 bin/console make:migration
 bin/console doctrine:migrations:migrate
+
+
+## Setup Controller
+
+- https://symfony.com/blog/introducing-the-symfony-maker-bundle
+- https://symfony.com/doc/current/bundles/SymfonyMakerBundle/index.html
+- php bin/console make:controller recipe
