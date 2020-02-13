@@ -49,6 +49,11 @@ bin/console make:migration
 bin/console doctrine:migrations:migrate
 
 
+query join
+- https://stackoverflow.com/questions/18357159/how-to-perform-a-join-query-using-symfony-and-doctrine-query-builder
+- https://stackoverflow.com/questions/25271726/doctrine-query-builder-datetime  (query date)
+
+
 ## Setup Controller
 
 - https://symfony.com/blog/introducing-the-symfony-maker-bundle
