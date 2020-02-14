@@ -105,7 +105,7 @@ http://127.0.0.1:8000/use-by/2019-02-02
 - git clone project
 - copy .env_basic to .env 
 - chechk connect mysql to server
-- restore database from to mysql server
+- restore database from to mysql server (folder \docs\database) choose last version 
 - in / run composer install in cmd
 - run symfony server:start in cmd
 - accest url api http://127.0.0.1:8000/ in browser
