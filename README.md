@@ -89,3 +89,12 @@ http://127.0.0.1:8000/use-by/2019-02-02
 - https://symfony.com/doc/current/controller/error_pages.html#use-default-error-controller
 - https://symfony.com/doc/current/configuration.html  (config env)
 - php bin/console cache:clear --env=prod --no-debug  (clear cache prod)
+
+
+# Environment working for my test
+- win 10
+- symfony 5.0.4
+- php 7.3.6
+- MySQL version: 5.5.5-10.4.8-MariaDB
+- Composer version 1.8.6 2019-06-11 15:03:05
+- Symfony CLI version v4.12.8 (c) 2017-2020 Symfony SAS

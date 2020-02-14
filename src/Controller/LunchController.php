@@ -12,7 +12,19 @@ use App\Repository\LunchRespository;
 
 class LunchController extends AbstractController
 {
-    
+    /**
+     * @Route("/", name="home", methods={"GET"})
+     */
+    public function index(){
+
+        $symfony_version = \Symfony\Component\HttpKernel\Kernel::VERSION;
+
+        return $this->render('index.html.twig', [
+            'symfony_current' => $symfony_version,
+            'php_version' => PHP_VERSION,
+        ]);
+
+    }
 
     /**
      * @Route("/lunch", name="get_lunch", methods={"GET"})
