@@ -64,6 +64,8 @@ query join
 
 # Link api
 
+- php bin/console debug:router --env=prod  (get all router)
+
 - all dish
 http://127.0.0.1:8000/lunch
 
