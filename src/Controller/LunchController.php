@@ -70,15 +70,10 @@ class LunchController extends AbstractController
         
 
         return $this->json($rs);
-
-        var_dump($rs);
-
-        echo '1231323';die;
-
     }
 
     /**
-     * @Route("/userby/{date}", name="get_userby", methods={"GET"})
+     * @Route("/use-by/{date}", name="get_userby", methods={"GET"})
      */
     public function get_userby($date)
     {
@@ -136,8 +131,8 @@ class LunchController extends AbstractController
 
     
     /**
-     * @Route("/bestbefore/{date}", name="get_bestbefore", methods={"GET"})
-     */
+     * @Route("/best-before/{date}", name="get_bestbefore", methods={"GET"})
+    */
     public function get_bestbefore($date)
     {
         $check = $this->check_input_date($date);

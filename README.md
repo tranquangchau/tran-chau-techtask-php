@@ -72,3 +72,18 @@ http://127.0.0.1:8000/bestbefore/2019-03-5
 http://127.0.0.1:8000/bestbefore/2019-03-50 (error)
 - date input > ingredient.use_by
 http://127.0.0.1:8000/userby/2019-02-02
+
+
+# Test
+
+- https://symfony.com/doc/current/testing.html
+- composer require --dev symfony/phpunit-bridge
+- composer require --dev test-pack
+- write class test webtest https://symfony.com/doc/current/testing.html#your-first-functional-test
+- ./bin/phpunit  (run test)
+
+
+# Template 404
+- https://symfony.com/doc/current/controller/error_pages.html#use-default-error-controller
+- https://symfony.com/doc/current/configuration.html  (config env)
+- php bin/console cache:clear --env=prod --no-debug  (clear cache prod)
