@@ -52,7 +52,7 @@ class LunchRespository extends ServiceEntityRepository
             // ->where('e.id = 1')
             ->where('i.bestBefore > :last')
             ->setParameter('last', new \DateTime($date), \Doctrine\DBAL\Types\Type::DATETIME)
-            ->orderBy('r.id', 'ASC')
+            ->orderBy('i.bestBefore', 'DESC')
             ->getQuery()
             ->getResult();
 
@@ -70,7 +70,7 @@ class LunchRespository extends ServiceEntityRepository
             ->join('r.idIngredient', 'i')
             ->where('i.useBy > :last')
             ->setParameter('last', new \DateTime($date), \Doctrine\DBAL\Types\Type::DATETIME)
-            ->orderBy('r.id', 'ASC')
+            ->orderBy('i.useBy', 'DESC')
             //->setMaxResults(10)
             ->getQuery()
             ->getResult();
