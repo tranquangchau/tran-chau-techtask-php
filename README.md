@@ -98,3 +98,15 @@ http://127.0.0.1:8000/use-by/2019-02-02
 - MySQL version: 5.5.5-10.4.8-MariaDB
 - Composer version 1.8.6 2019-06-11 15:03:05
 - Symfony CLI version v4.12.8 (c) 2017-2020 Symfony SAS
+
+
+# Restore 
+- install some software need, symfony cli, php 7, mysql 5, composer in OS
+- git clone project
+- copy .env_basic to .env 
+- chechk connect mysql to server
+- restore database from to mysql server
+- in / run composer install in cmd
+- run symfony server:start in cmd
+- accest url api http://127.0.0.1:8000/ in browser
+- run test ./bin/phpunit in cmd
