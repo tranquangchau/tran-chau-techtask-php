@@ -20,13 +20,13 @@
 
 ## Step for database
 
-- create entity
+- create entity  
 - bin/console make:entity NameEntity
 
 
 - add column in file entity
 
-- general set/get
+- general set/get  
 - php bin/console make:entity --regenerate App
 
 - https://symfony.com/doc/current/doctrine/reverse_engineering.html
@@ -41,11 +41,11 @@
 - DATABASE TO entity
 - https://symfony.com/doc/current/doctrine/reverse_engineering.html
 
-flow basic
-php bin/console doctrine:mapping:import "App\Entity" xml --path=config/doctrine   (mapping)
-php bin/console make:entity --regenerate App (general setget)
-(make migration)
-bin/console make:migration
+flow basic  
+php bin/console doctrine:mapping:import "App\Entity" xml --path=config/doctrine   (mapping)  
+php bin/console make:entity --regenerate App (general setget)  
+(make migration)  
+bin/console make:migration  
 bin/console doctrine:migrations:migrate
 
 
